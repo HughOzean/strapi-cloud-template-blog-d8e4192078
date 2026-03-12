@@ -166,16 +166,20 @@ async function updateBlocks(blocks) {
   return updatedBlocks;
 }
 
-async function importArticles() {
+async function importGuides() {
   for (const article of articles) {
-    const cover = await checkFileExistsBeforeUpload([`${article.slug}.jpg`]);
+    const coverImage = await checkFileExistsBeforeUpload([`${article.slug}.jpg`]);
     const updatedBlocks = await updateBlocks(article.blocks);
 
     await createEntry({
-      model: 'article',
+      model: 'guide',
       entry: {
-        ...article,
-        cover,
+        title: article.title,
+        slug: article.slug,
+        excerpt: article.description,
+        coverImage,
+        author: article.author,
+        category: article.category,
         blocks: updatedBlocks,
         // Make sure it's not a draft
         publishedAt: Date.now(),
@@ -239,7 +243,6 @@ async function importAuthors() {
 async function importSeedData() {
   // Allow read of application content types
   await setPublicPermissions({
-    article: ['find', 'findOne'],
     category: ['find', 'findOne'],
     author: ['find', 'findOne'],
     global: ['find', 'findOne'],
@@ -247,13 +250,13 @@ async function importSeedData() {
     app: ['find', 'findOne'],
     guide: ['find', 'findOne'],
     homepage: ['find', 'findOne'],
-'single-page': ['find', 'findOne'],
+    'single-page': ['find', 'findOne'],
   });
 
   // Create all entries
   await importCategories();
   await importAuthors();
-  await importArticles();
+  await importGuides();
   await importGlobal();
   await importAbout();
 }

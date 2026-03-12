@@ -5,7 +5,7 @@
     "singularName": "guide",
     "pluralName": "guides",
     "displayName": "Guide",
-    "description": "How-to and tutorial content"
+    "description": "Unified content type merged from Article + Guide"
   },
   "options": {
     "draftAndPublish": true
@@ -22,7 +22,8 @@
       "required": true
     },
     "excerpt": {
-      "type": "text"
+      "type": "text",
+      "maxLength": 80
     },
     "content": {
       "type": "richtext"
@@ -31,7 +32,23 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": ["images", "files", "videos"]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "guides"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "guides"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": ["shared.media", "shared.quote", "shared.rich-text", "shared.slider"]
     }
   }
 }

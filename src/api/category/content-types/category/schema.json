@@ -18,10 +18,10 @@
     "slug": {
       "type": "uid"
     },
-    "articles": {
+    "guides": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article",
+      "target": "api::guide.guide",
       "mappedBy": "category"
     },
     "description": {
