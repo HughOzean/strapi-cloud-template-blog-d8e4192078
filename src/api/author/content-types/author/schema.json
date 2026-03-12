@@ -24,10 +24,10 @@
     "email": {
       "type": "string"
     },
-    "guides": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::guide.guide",
+      "target": "api::article.article",
       "mappedBy": "author"
     }
   }
