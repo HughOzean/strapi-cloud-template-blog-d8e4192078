@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "single_pages",
+  "info": {
+    "singularName": "single-page",
+    "pluralName": "single-pages",
+    "displayName": "Single Page",
+    "description": "Reusable standalone page content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "summary": {
+      "type": "text"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}
