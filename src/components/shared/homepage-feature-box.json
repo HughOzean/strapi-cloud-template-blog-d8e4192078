@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_shared_homepage_feature_boxes",
+  "info": {
+    "displayName": "Homepage Feature Box",
+    "icon": "layout",
+    "description": "Feature cards shown under homepage hero"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

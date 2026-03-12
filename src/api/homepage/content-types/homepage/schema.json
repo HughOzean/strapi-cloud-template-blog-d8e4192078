@@ -26,6 +26,11 @@
     "heroSubtitle": {
       "type": "text"
     },
+    "heroFeatureBoxes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.homepage-feature-box"
+    },
     "featuredApps": {
       "type": "relation",
       "relation": "oneToMany",
