@@ -12,6 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.homepage-banner"
+    },
     "heroBadge": {
       "type": "string"
     },
@@ -25,6 +30,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::app.app"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.seo"
     }
   }
 }

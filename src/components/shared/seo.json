@@ -16,6 +16,9 @@
       "type": "text",
       "required": true
     },
+    "metaKeywords": {
+      "type": "text"
+    },
     "shareImage": {
       "type": "media",
       "multiple": false,
