@@ -11,7 +11,7 @@ Set up one outbound webhook in Strapi Admin to trigger immediate ISR revalidatio
 Enable events for these content-types:
 
 - App (`api::app.app`): create, update, publish, unpublish, delete
-- Guide (`api::guide.guide`): create, update, publish, unpublish, delete
+- Article (`api::article.article`): create, update, publish, unpublish, delete
 - Homepage (`api::homepage.homepage`): create, update, publish, unpublish, delete
 - Single Page (`api::single-page.single-page`): create, update, publish, unpublish, delete
 
@@ -30,6 +30,6 @@ Use these values in the Next.js app (`nextjs-boilerplate/.env.local`):
 ```bash
 STRAPI_URL=https://ingenious-baseball-715144ecf2.strapiapp.com
 STRAPI_APPS_PATH=/api/apps
-STRAPI_GUIDES_PATH=/api/guides
+STRAPI_GUIDES_PATH=/api/articles
 STRAPI_REVALIDATE_SECRET=techderrick_strapi_revalidate_20260312
 ```

@@ -245,7 +245,6 @@ async function importSeedData() {
     global: ['find', 'findOne'],
     about: ['find', 'findOne'],
     app: ['find', 'findOne'],
-    guide: ['find', 'findOne'],
     homepage: ['find', 'findOne'],
     'single-page': ['find', 'findOne'],
   });

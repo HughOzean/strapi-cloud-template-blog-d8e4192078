@@ -5,7 +5,7 @@
     "singularName": "article",
     "pluralName": "articles",
     "displayName": "Article",
-    "description": "Create your blog content"
+    "description": "Unified content type for editorial and guide content"
   },
   "options": {
     "draftAndPublish": true
@@ -23,11 +23,19 @@
       "type": "uid",
       "targetField": "title"
     },
+    "markdown": {
+      "type": "richtext"
+    },
     "cover": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos"]
+      "allowedTypes": ["images", "files", "videos"],
+      "pluginOptions": {
+        "content-manager": {
+          "visible": false
+        }
+      }
     },
     "author": {
       "type": "relation",
