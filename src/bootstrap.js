@@ -60,6 +60,52 @@ async function setPublicPermissions(newPermissions) {
   await Promise.all(allPermissionsToCreate);
 }
 
+async function ensurePublicPermission(controller, action) {
+  const publicRole = await strapi.query('plugin::users-permissions.role').findOne({
+    where: { type: 'public' },
+  });
+
+  if (!publicRole) return;
+
+  const actionName = `api::${controller}.${controller}.${action}`;
+  const existingPermission = await strapi.query('plugin::users-permissions.permission').findOne({
+    where: {
+      action: actionName,
+      role: publicRole.id,
+    },
+  });
+
+  if (!existingPermission) {
+    await strapi.query('plugin::users-permissions.permission').create({
+      data: {
+        action: actionName,
+        role: publicRole.id,
+      },
+    });
+  }
+}
+
+async function ensureGuidesPageDefaults() {
+  const existing = await strapi.db.query('api::guides-page.guides-page').findOne({
+    where: {},
+  });
+
+  if (existing) return;
+
+  await strapi.documents('api::guides-page.guides-page').create({
+    data: {
+      badge: 'Guides Hub',
+      h1: 'Guides from CMS Articles',
+      description:
+        'Only published articles from Strapi are shown here. If an article is not in Strapi or not published, it will not appear in this list.',
+      seoTitle: 'Guides | TECH DERRICK',
+      seoDescription:
+        'Published TV and consumer tech guides from Strapi articles, synchronized to the /guides page.',
+      publishedAt: Date.now(),
+    },
+  });
+}
+
 function getFileSizeInBytes(filePath) {
   const stats = fs.statSync(filePath);
   const fileSizeInBytes = stats['size'];
@@ -274,4 +320,7 @@ async function main() {
 
 module.exports = async () => {
   await seedExampleApp();
+  await ensurePublicPermission('guides-page', 'find');
+  await ensurePublicPermission('guides-page', 'findOne');
+  await ensureGuidesPageDefaults();
 };
