@@ -27,6 +27,15 @@
     "tagline": {
       "type": "text"
     },
+    "brief": {
+      "type": "text"
+    },
+    "markdown": {
+      "type": "text"
+    },
+    "downloadUrl": {
+      "type": "string"
+    },
     "pricing": {
       "type": "string"
     },

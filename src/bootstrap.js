@@ -325,6 +325,14 @@ module.exports = async () => {
     await ensurePublicPermission('guides-page', 'findOne');
   });
 
+
+  await runSafely('ensure app find permission', async () => {
+    await ensurePublicPermission('app', 'find');
+  });
+
+  await runSafely('ensure app findOne permission', async () => {
+    await ensurePublicPermission('app', 'findOne');
+  });
   await runSafely('ensure guides-page defaults', async () => {
     await ensureGuidesPageDefaults();
   });
